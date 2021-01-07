@@ -1,0 +1,122 @@
+if(isset($_POST['email'])) {
+  $_POST['amount'] = sprintf('%.2f',(int)$_POST['amount']);
+$message = <<<EOD
+  <center style="padding: 55px 0;color:#fff;">
+  <b>TOTAL</b><br>
+    <a style="color: #00adff; font-size: 1.7em;">P {$_POST['amount']}</a><br>
+  <b>DATE</b><br>
+    <a style="color: #00adff; font-size: 1.5em;">{$_POST['date']}</a><br>
+  </center>
+  <div style="background: #e6e6e6; width:100%;padding: 17px;margin-top: 12px;box-sizing:border-box;">
+    <table style="width: 100%">
+      <tbody>
+        <tr>
+          <td rowspan="5" style="margin-right: 8px;">
+            <a style="color: #00adff; font-size: 1em;">Receipt Summary</a><br>
+            <div style="background: #fff;border: 1px solid gray; padding: 14px;margin-right:17px;border-radius: 4px;">
+              <a>Payment Method</a><br>
+              <b>Cash</b><br>
+              <hr style="border-top: 1px dashed #000;">
+              <table style="width: 100%;">
+                <tr>
+                  <th align="left">Item</th>
+                  <th align="left">Date</th>
+                  <th align="left">Price</th>
+                </tr>
+                <tr>
+                  <td style="padding: 0 7px">{$_POST['event']}</td>
+                  <td style="white-space: pre!important;padding: 0 7px;">{$_POST['date']}</td>
+                  <td style="white-space: pre!important;padding: 0 7px;">P {$_POST['amount']}</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                  <hr style="border-top: 1px dashed #000;">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <b>Total</b>
+                  </td>
+                  <td>
+                    P {$_POST['amount']}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a style="color: #00adff; font-size: 1em;">Payment Info</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #4f4f4f;">
+            Event<br>
+            <b style="color: #000; font-size: 1em;">{$_POST['event']}</b>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #4f4f4f;">
+            Issued by<br>
+            <b style="color: #000; font-size: 1em;">{$_SESSION['account']['full_name']}</b>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #4f4f4f;">
+            Issued to<br>
+            <b style="color: #000; font-size: 1em;">{$_POST['name']}</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+EOD;
+}
+if(isset($_POST['email'])){
+  $style = <<<EOD
+    style="background: url('https://i.imgur.com/a9WRvC0.png') no-repeat; background-size: 100% 100%;margin-top:22px;"
+EOD;
+} else {
+  $style = "";
+}
+$message = <<<EOD
+    <style>
+      tablr tr td {white-space: pre;}</style>
+    <body style="margin: 0 auto;width:550px;font-size: 17px;font-family: arial;">
+      <div style="width: 100%">
+        <header style="width: 100%;padding: 7px 0;height: auto;">
+          <div style="width: 100%;background: #00adff;">
+            <img src="https://i.imgur.com/7gBPqhW.png" width="500"/>
+          </div>
+        </header>
+        <div style="width:90%; margin: 50px auto;background: #fff;padding: 20px; 20px 35px 20px;border-radius: 8px;">
+          <h3 style="color: #00adff;word-break: break-word;margin: 0;padding: 20px 20px 0 20px">{$title}</h3>
+          <span style="padding: 0 20px;padding-bottom:10px;">{$info}</span>
+          <div {$style}>
+            {$message}
+          </div>
+        </div>
+        <footer style="width: 100%;background: #00adff;padding: 20px 0;">
+          <div style="width: 90%; margin: 0 auto;display: flex;color: #fff;justify-content:space-between;">
+            <div>
+              <div style="color: #fff;display:flex;align-items:center;text-decoration: none;">
+                <table>
+                  <tr>
+                    <td align="right">
+                      <a href="{$domain}" style="margin-bottom: 35px;margin-right:10px;text-decoration:none;font-size: .8rem;cursor: pointer;outline:none;background: #763ab7;border: none;padding: 15px 20px;color: #fff;font-weight:bold;text-transform:uppercase;border-radius: 7px;">
+                        PSITS WEBSITE &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div style="width:50%">
+              <center>
+              </center>
+            </div>
+          </div>
+        </footer>
+      </div>
+EOD;

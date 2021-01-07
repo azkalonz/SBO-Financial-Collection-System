@@ -1,0 +1,13 @@
+{
+    "name": "psits/uc",
+    "authors": [
+        {
+            "name": "azkalonz",
+            "email": "aeartixenter@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^3.3",
+        "nesk/puphpeteer": "^1.5"
+    }
+}
